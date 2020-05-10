@@ -3,9 +3,11 @@ package com.sergiescoruela.parties.pojo;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 
-public class Local extends ArrayList<Parcelable> implements Parcelable {
+public class Local implements Parcelable {
 
     private String nombre;
     private String descripcion;
@@ -29,6 +31,7 @@ public class Local extends ArrayList<Parcelable> implements Parcelable {
         this.precio = precio;
     }
 
+
     protected Local(Parcel in) {
         nombre = in.readString();
         descripcion = in.readString();
@@ -36,6 +39,7 @@ public class Local extends ArrayList<Parcelable> implements Parcelable {
         hora = in.readString();
         musica = in.readString();
         edad = in.readString();
+        precio = in.createTypedArrayList(Precio.CREATOR);
     }
 
     @Override
@@ -46,6 +50,7 @@ public class Local extends ArrayList<Parcelable> implements Parcelable {
         dest.writeString(hora);
         dest.writeString(musica);
         dest.writeString(edad);
+        dest.writeTypedList(precio);
     }
 
     @Override
@@ -119,5 +124,11 @@ public class Local extends ArrayList<Parcelable> implements Parcelable {
 
     public void setListaPrecios(ArrayList<Precio> precio) {
         this.precio = precio;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "TAMAÑO PRECIOS: "+imagen.size();
     }
 }

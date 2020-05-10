@@ -158,7 +158,6 @@ public class HomeFragment extends Fragment {
             System.out.println("llega home");
             for (Local local : listaLocal) {
                 System.out.println(local.getNombre() + "listaLocal");
-
             }
             myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override

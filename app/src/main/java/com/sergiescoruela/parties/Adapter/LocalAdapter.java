@@ -2,6 +2,7 @@ package com.sergiescoruela.parties.Adapter;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +59,7 @@ public class LocalAdapter extends RecyclerView.Adapter<LocalAdapter.ElementoLoca
 
         final Local local= listaLocales.get(position);
 
+        Log.d("PRECIOS", local.toString());
 
         //holder.imagen.setImageResource(local.getImgagen());
         holder.txtNombre.setText(local.getNombre());
@@ -69,7 +71,7 @@ public class LocalAdapter extends RecyclerView.Adapter<LocalAdapter.ElementoLoca
             public void onClick(View view) {
                 Toast.makeText(context, "has echo click", Toast.LENGTH_SHORT).show();
                 Bundle bundle = new Bundle();
-                bundle.putParcelableArrayList("localUnico", local);
+                bundle.putParcelable("localUnico", local);
                 Navigation.findNavController(view).navigate(R.id.mostrarLocalFragment,bundle);
             }
         });
