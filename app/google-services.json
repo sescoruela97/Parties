@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "598822029090",
+    "firebase_url": "https://parties-33bbc.firebaseio.com",
+    "project_id": "parties-33bbc",
+    "storage_bucket": "parties-33bbc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598822029090:android:a5bbbd4546ff35de84477b",
+        "android_client_info": {
+          "package_name": "com.sergiescoruela.parties"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "598822029090-7s7d1levkjp6b8v9j23uit2meq95uja2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sergiescoruela.parties",
+            "certificate_hash": "dabf63db23af5b15ae74481b877ec06623b63a10"
+          }
+        },
+        {
+          "client_id": "598822029090-r6ug4p2q72vou9cp025ta0omaee6bl6e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSXYizrRSZFX9CdeYk6NN2hZ_NAqgyr2k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "598822029090-r6ug4p2q72vou9cp025ta0omaee6bl6e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
