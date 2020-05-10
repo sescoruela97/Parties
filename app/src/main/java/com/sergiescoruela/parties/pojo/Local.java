@@ -126,6 +126,14 @@ public class Local implements Parcelable {
         this.precio = precio;
     }
 
+    public ArrayList<Precio> getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(ArrayList<Precio> precio) {
+        this.precio = precio;
+    }
+
     @NonNull
     @Override
     public String toString() {

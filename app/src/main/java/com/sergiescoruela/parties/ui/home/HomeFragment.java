@@ -33,6 +33,7 @@ import com.sergiescoruela.parties.Adapter.LocalAdapter;
 import com.sergiescoruela.parties.MainActivity;
 import com.sergiescoruela.parties.R;
 import com.sergiescoruela.parties.pojo.Local;
+import com.sergiescoruela.parties.pojo.Precio;
 
 import org.w3c.dom.ls.LSOutput;
 
@@ -100,6 +101,7 @@ public class HomeFragment extends Fragment {
         // Read from the database
 
 
+
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -109,8 +111,8 @@ public class HomeFragment extends Fragment {
 
                 GenericTypeIndicator<Map<String, Local>> genericTypeIndicator =
                         new GenericTypeIndicator<Map<String, Local>>() {};
-
                 mapaLocal = dataSnapshot.getValue(genericTypeIndicator);
+
 
 
                 listaLocal.clear();
@@ -118,6 +120,7 @@ public class HomeFragment extends Fragment {
                     listaLocal.addAll(mapaLocal.values());
                    // indices.addAll(mapaLocal.keySet());
                 }
+
                 adapter.notifyDataSetChanged();
             }
 

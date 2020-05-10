@@ -5,9 +5,9 @@ import android.os.Parcelable;
 
 public class Precio implements Parcelable {
 
-    String nombreLocal;
-    String descripcionLocal;
-    String precio;
+    private String nombreLocal;
+    private String descripcionLocal;
+    private String precio;
 
     public Precio() {
     }
