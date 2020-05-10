@@ -109,7 +109,7 @@ public class ConfigUsuarioFragment extends Fragment {
                     // nav_imagen.setImageResource(R.drawable.download);
 
                 }
-                System.out.println("Config2   "+ listaUsuarios.size());
+                System.out.println("Conig2   "+ listaUsuarios.size());
 
                 System.out.println("Config1   "+ listaUsuarios.size());
                 for (int i = 0; i <listaUsuarios.size(); i++) {
