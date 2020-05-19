@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -42,6 +43,7 @@ public class LoginFragment extends Fragment {
     private EditText txtEmail, txtPass;
     private Button btnReg , btnAcceder;
     private ProgressBar pbloading;
+    private TextView lblrecuperar;
 
     private FirebaseAuth mAuth;
     private MainActivity mainActivity;
@@ -49,7 +51,7 @@ public class LoginFragment extends Fragment {
     private AppBarConfiguration mAppBarConfiguration;
 
 
-    public static LoginFragment newInstance() {
+    public static LoginFragment newInstance(Object o) {
         return new LoginFragment();
     }
 
@@ -67,6 +69,7 @@ public class LoginFragment extends Fragment {
         pbloading = root.findViewById(R.id.pbLoguin);
         btnReg = root.findViewById(R.id.btnRegistrar);
         btnAcceder = root.findViewById(R.id.btnLoguin);
+        lblrecuperar = root.findViewById(R.id.lblRecuperar);
 
 
         // Initialize Firebase Auth
@@ -99,6 +102,13 @@ public class LoginFragment extends Fragment {
 
                 Navigation.findNavController(view).navigate(R.id.crearUsuarioFragment);
 
+            }
+        });
+
+        lblrecuperar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.recuperarFragment);
             }
         });
 

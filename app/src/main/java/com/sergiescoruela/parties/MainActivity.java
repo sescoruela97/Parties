@@ -3,6 +3,7 @@ package com.sergiescoruela.parties;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.transition.Transition;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MenuItem;
@@ -25,12 +26,14 @@ import com.google.firebase.database.ValueEventListener;
 import com.sergiescoruela.parties.Adapter.LocalAdapter;
 import com.sergiescoruela.parties.pojo.Local;
 import com.sergiescoruela.parties.pojo.Usuarios;
+import com.sergiescoruela.parties.ui.home.HomeFragment;
 import com.sergiescoruela.parties.ui.login.LoginFragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -46,6 +49,7 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int ADD_TAG_IF_NECESSARY = 1 ;
     private AppBarConfiguration mAppBarConfiguration;
     //header
     private ArrayList<Usuarios> listaUsuarios;
@@ -65,20 +69,21 @@ public class MainActivity extends AppCompatActivity {
     private TextView nav_email;
     private ImageView nav_imagen;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
+       /* FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -182,15 +187,51 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-/*
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        super.onOptionsItemSelected(item);
-        FirebaseAuth.getInstance().signOut();
-        finish();
-        return true;
-    }
+
+
+        switch (item.getItemId()){
+
+            case R.id.action_logaut:
+
+                if(currentUser != null){
+
+                    FirebaseAuth.getInstance().signOut();
+                }
+                Fragment  sfragment = LoginFragment.newInstance(null);
+               // Navigation.findNavController(view).navigate(R.id.loginFragment);
+               // Navigation.findNavController(this, R.id.loginFragment);
+
+             /*  FragmentManager manager = getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+
+                //initialize your second fragment
+
+                //replace your current container being most of the time as FrameLayout
+                //
+                transaction.replace(R.id.nav_host_fragment, sfragment);
+                transaction.hide(getResources().);
+                //transaction.add(R.id.nav_host_fragment,sfragment);
+                transaction.commit();
+
 */
+                FragmentManager fm = getSupportFragmentManager();
+                fm.beginTransaction()
+                        .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out).replace(R.id.nav_host_fragment, sfragment)
+                        .show(sfragment)
+                        .commit();
+
+
+        }
+
+
+        //finish();
+        return super.onOptionsItemSelected(item);
+    }
+
+
 
     public void changeNavHeaderDdata(){
 
@@ -199,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
         if (currentUser!=null){
             nav_user.setText(currentUser.getDisplayName());
             nav_email.setText(currentUser.getEmail());
-            nav_imagen.setImageResource(R.drawable.download);
+           // nav_imagen.setImageResource(R.drawable.download);
             System.out.println(currentUser.getEmail() + " current eso es una prueba del main");
 
         }

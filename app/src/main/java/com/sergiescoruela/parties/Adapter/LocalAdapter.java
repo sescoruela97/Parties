@@ -64,7 +64,7 @@ public class LocalAdapter extends RecyclerView.Adapter<LocalAdapter.ElementoLoca
         //holder.imagen.setImageResource(local.getImgagen());
         holder.txtNombre.setText(local.getNombre());
         holder.txtDescripcion.setText(local.getDescripcion());
-       // System.out.println(local.getListaPrecios().size() + " Lista de precios ");
+        System.out.println(local.getPrecio().size() + " Lista de precios ");
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -55,4 +55,9 @@
         android:name="com.sergiescoruela.parties.ui.configUsuario.ConfigUsuarioFragment"
         android:label="config_usuario_fragment"
         tools:layout="@layout/config_usuario_fragment" />
+    <fragment
+        android:id="@+id/recuperarFragment"
+        android:name="com.sergiescoruela.parties.ui.RecuperarFragment"
+        android:label="recuperar_fragment"
+        tools:layout="@layout/recuperar_fragment" />
 </navigation>

@@ -3,107 +3,114 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".ui.configUsuario.ConfigUsuarioFragment">
 
     <ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/lblimagenConfigUsuario"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Foto usuario"
-            android:textSize="24sp" />
+            android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imgusuarioCrearConfigUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:src="@drawable/ic_launcher_foreground" />
+            <TextView
+                android:id="@+id/lblimagenConfigUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Foto usuario"
+                android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/lblNombreConfigUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Nombre"
-            android:textSize="24sp" />
+            <ImageView
+                android:id="@+id/imgusuarioCrearConfigUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_launcher_foreground" />
 
-        <EditText
-            android:id="@+id/txtNombreConfigUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:ems="10"
-            android:hint="Nombre"
-            android:inputType="textPersonName" />
+            <Button
+                android:id="@+id/btnSubirImagen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Seleccionar imagen" />
 
-        <TextView
-            android:id="@+id/lblCorreoConfigUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Correo"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/lblNombreConfigUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Nombre"
+                android:textSize="24sp" />
 
-        <EditText
-            android:id="@+id/txtCorreoConfigUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:ems="10"
-            android:hint="Correo"
-            android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/txtNombreConfigUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:ems="10"
+                android:hint="Nombre"
+                android:inputType="textPersonName" />
 
-        <TextView
-            android:id="@+id/lblContraseñaConfigUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Contraseña"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/lblCorreoConfigUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Correo"
+                android:textSize="24sp" />
 
-        <EditText
-            android:id="@+id/txtContraseñaConfigUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:ems="10"
-            android:hint="Contraseña"
-            android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/txtCorreoConfigUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:ems="10"
+                android:hint="Correo"
+                android:inputType="textPersonName" />
 
-        <TextView
-            android:id="@+id/lblFechaNacimientoConfigUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Fecha de Nacimiento"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/lblContraseñaConfigUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Contraseña"
+                android:textSize="24sp" />
 
-        <EditText
-            android:id="@+id/txtFechaNacimientoConfigUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:ems="10"
-            android:hint="Fecha"
-            android:inputType="date" />
+            <EditText
+                android:id="@+id/txtContraseñaConfigUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:ems="10"
+                android:hint="Contraseña"
+                android:inputType="textPersonName" />
 
-        <Button
-            android:id="@+id/btnConfigUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Canbiar datos " />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/lblFechaNacimientoConfigUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Fecha de Nacimiento"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/txtFechaNacimientoConfigUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:ems="10"
+                android:hint="Fecha"
+                android:inputType="date" />
+
+            <Button
+                android:id="@+id/btnConfigUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Cambiar datos " />
+        </LinearLayout>
     </ScrollView>
-    </FrameLayout>
+</FrameLayout>
