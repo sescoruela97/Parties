@@ -74,7 +74,14 @@ public class CrearUsuarioFragment extends Fragment {
 
 
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("usuario");
+
+                String remplazar= txtCorreo.getText().toString();
+                 //remplazar.replaceAll("[-+.^:,]","");
+                       // remplazar.replace(".","@");
+               String replazar1= remplazar.replace(".","@");
+                System.out.println(replazar1);
+
+                DatabaseReference myRef = database.getReference("usuario/"+replazar1);
 
                // listaLocal.add(new Local("Goku","Son Gokū es el protagonista del manga y anime Dragon Ball creado por Akira Toriyama.",R.drawable.download,"02:00","pop","18"));
 
@@ -82,7 +89,8 @@ public class CrearUsuarioFragment extends Fragment {
                         ,txtFechaNacimiento.getText().toString());
 
 
-                myRef.push().setValue(usuarios);
+               // myRef.child("usuario").child(txtCorreo.getText().toString()).setValue(usuarios);
+                myRef.setValue(usuarios);
 
                 doRegistro(txtCorreo.getText().toString(),txtContraseña.getText().toString());
             }

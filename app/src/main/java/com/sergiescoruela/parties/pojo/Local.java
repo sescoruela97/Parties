@@ -15,15 +15,17 @@ public class Local implements Parcelable {
     private String hora;
     private String musica;
     private String edad;
+    private String direccion;
     private ArrayList<Precio> precio;
 
 
     public Local() {
     }
 
-    public Local(String nombre, String descripcion, ArrayList<String> imgagen, String hora, String musica, String edad, ArrayList<Precio> precio) {
+    public Local(String nombre, String descripcion, String direccion ,ArrayList<String> imgagen, String hora, String musica, String edad, ArrayList<Precio> precio) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.direccion = direccion;
         this.imagen = imgagen;
         this.hora = hora;
         this.musica = musica;
@@ -35,6 +37,7 @@ public class Local implements Parcelable {
     protected Local(Parcel in) {
         nombre = in.readString();
         descripcion = in.readString();
+        direccion = in.readString();
         imagen = in.createStringArrayList();
         hora = in.readString();
         musica = in.readString();
@@ -46,6 +49,7 @@ public class Local implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(nombre);
         dest.writeString(descripcion);
+        dest.writeString(direccion);
         dest.writeStringList(imagen);
         dest.writeString(hora);
         dest.writeString(musica);
@@ -82,9 +86,17 @@ public class Local implements Parcelable {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
+
+
+
+    public String getDireccion() {
+        return direccion;
+    }
+
 
     public ArrayList<String> getImagen() {
         return imagen;

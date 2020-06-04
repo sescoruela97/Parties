@@ -5,22 +5,22 @@ import android.os.Parcelable;
 
 public class Precio implements Parcelable {
 
-    private String nombreLocal;
-    private String descripcionLocal;
+    private String tipoEntrada;
+    private String descripcionEntrada;
     private String precio;
 
     public Precio() {
     }
 
-    public Precio(String nombreLocal, String descripcionLocal, String precio) {
-        this.nombreLocal = nombreLocal;
-        this.descripcionLocal = descripcionLocal;
+    public Precio(String tipoEntrada, String descripcionEntrada, String precio) {
+        this.tipoEntrada = tipoEntrada;
+        this.descripcionEntrada = descripcionEntrada;
         this.precio = precio;
     }
 
     protected Precio(Parcel in) {
-        nombreLocal = in.readString();
-        descripcionLocal = in.readString();
+        tipoEntrada = in.readString();
+        descripcionEntrada = in.readString();
         precio = in.readString();
     }
 
@@ -36,20 +36,20 @@ public class Precio implements Parcelable {
         }
     };
 
-    public String getNombreLocal() {
-        return nombreLocal;
+    public String getTipoEntrada() {
+        return tipoEntrada;
     }
 
-    public void setNombreLocal(String nombreLocal) {
-        this.nombreLocal = nombreLocal;
+    public void setTipoEntrada(String tipoEntrada) {
+        this.tipoEntrada = tipoEntrada;
     }
 
-    public String getDescripcionLocal() {
-        return descripcionLocal;
+    public String getDescripcionEntrada() {
+        return descripcionEntrada;
     }
 
-    public void setDescripcionLocal(String descripcionLocal) {
-        this.descripcionLocal = descripcionLocal;
+    public void setDescripcionEntrada(String descripcionEntrada) {
+        this.descripcionEntrada = descripcionEntrada;
     }
 
     public String getPrecio() {
@@ -67,8 +67,8 @@ public class Precio implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(nombreLocal);
-        parcel.writeString(descripcionLocal);
+        parcel.writeString(tipoEntrada);
+        parcel.writeString(descripcionEntrada);
         parcel.writeString(precio);
     }
 }

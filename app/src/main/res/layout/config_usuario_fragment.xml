@@ -35,7 +35,9 @@
                 android:id="@+id/btnSubirImagen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Seleccionar imagen" />
+                android:background="@drawable/boton"
+                android:text="Seleccionar imagen"
+                android:textColor="#03A9F4" />
 
             <TextView
                 android:id="@+id/lblNombreConfigUsuario"
@@ -69,7 +71,8 @@
                 android:layout_margin="10dp"
                 android:ems="10"
                 android:hint="Correo"
-                android:inputType="textPersonName" />
+                android:inputType="textEmailAddress" />
+
 
             <TextView
                 android:id="@+id/lblContraseñaConfigUsuario"
@@ -86,7 +89,7 @@
                 android:layout_margin="10dp"
                 android:ems="10"
                 android:hint="Contraseña"
-                android:inputType="textPersonName" />
+                android:inputType="textPassword" />
 
             <TextView
                 android:id="@+id/lblFechaNacimientoConfigUsuario"
@@ -110,7 +113,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="Cambiar datos " />
+                android:background="@drawable/boton"
+                android:text="Cambiar datos "
+                android:textColor="#03A9F4" />
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

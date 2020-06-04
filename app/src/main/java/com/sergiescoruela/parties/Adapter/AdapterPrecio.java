@@ -5,9 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -15,9 +14,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sergiescoruela.parties.R;
-import com.sergiescoruela.parties.pojo.Local;
 import com.sergiescoruela.parties.pojo.Precio;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -27,6 +24,8 @@ public class AdapterPrecio extends RecyclerView.Adapter<AdapterPrecio.ElementoPr
     private Context context;
     private int resource;
     private ArrayList<Precio> listaPrecios;
+
+
 
     public AdapterPrecio(Context context, int resource, ArrayList<Precio> listaPrecios) {
         this.context = context;
@@ -60,9 +59,18 @@ public class AdapterPrecio extends RecyclerView.Adapter<AdapterPrecio.ElementoPr
         final Precio precio= listaPrecios.get(position);
 
 
-        holder.txtNombre.setText(precio.getNombreLocal());
-        holder.txtDescripcion.setText(precio.getDescripcionLocal());
+        holder.txtNombre.setText(precio.getTipoEntrada());
+        holder.txtDescripcion.setText(precio.getDescripcionEntrada());
         holder.txtPrecio.setText(precio.getPrecio());
+        holder.btnComprar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("precioUnico", precio);
+                Navigation.findNavController(view).navigate(R.id.mostrarPreioFragment,bundle);
+            }
+        });
 
     }
 
@@ -79,6 +87,7 @@ public class AdapterPrecio extends RecyclerView.Adapter<AdapterPrecio.ElementoPr
     public class ElementoPrecio extends RecyclerView.ViewHolder{
 
         private TextView txtNombre, txtDescripcion,txtPrecio;
+        private Button btnComprar;
         private CardView card;
 
 
@@ -88,7 +97,8 @@ public class AdapterPrecio extends RecyclerView.Adapter<AdapterPrecio.ElementoPr
 
             txtNombre=itemView.findViewById(R.id.lblNombrePrecio);
             txtPrecio=itemView.findViewById(R.id.lblPrecio);
-            txtDescripcion=itemView.findViewById(R.id.lblDescripcionPrecio);
+            txtDescripcion=itemView.findViewById(R.id.lblDescripcionprecio);
+            btnComprar=itemView.findViewById(R.id.btnComprar);
             card =itemView.findViewById(R.id.card);
 
         }

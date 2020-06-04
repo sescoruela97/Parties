@@ -2,6 +2,8 @@ package com.sergiescoruela.parties;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.transition.Transition;
 import android.util.AttributeSet;
@@ -12,6 +14,7 @@ import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -23,11 +26,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.sergiescoruela.parties.Adapter.LocalAdapter;
 import com.sergiescoruela.parties.pojo.Local;
 import com.sergiescoruela.parties.pojo.Usuarios;
 import com.sergiescoruela.parties.ui.home.HomeFragment;
 import com.sergiescoruela.parties.ui.login.LoginFragment;
+import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,6 +48,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -49,6 +57,7 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final long ONE_MEGABYTE = 1024 * 1024 *5 ;
     private static final int ADD_TAG_IF_NECESSARY = 1 ;
     private AppBarConfiguration mAppBarConfiguration;
     //header
@@ -58,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
     private int elementoFila = R.layout.elemento_local;
 
     private FirebaseAuth mAuth;
+    private StorageReference mStorageRef;
+    FirebaseStorage storage = FirebaseStorage.getInstance();
 
     private String emailLoguin;
     private String nombrelLoguin;
@@ -76,14 +87,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-       /* FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -96,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
        // NavController navController = Navigation.findNavController(this, R.id.loginFragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
 
 
 
@@ -145,14 +150,12 @@ public class MainActivity extends AppCompatActivity {
 
                 mapaUsuario = dataSnapshot.getValue(genericTypeIndicator);
 
-             //   listaUsuarios.add(new Local("Goku","Son Gokū es el protagonista del manga y anime Dragon Ball creado por Akira Toriyama.",R.drawable.download,"02:00","pop","18"));
 
                 if (mapaUsuario != null) {
                     listaUsuarios.addAll(mapaUsuario.values());
                     // indices.addAll(mapaLocal.keySet());
-                    nav_user.setText(emailLoguin);
-                    nav_email.setText(nombrelLoguin);
-                   // nav_imagen.setImageResource(R.drawable.download);
+                    changeNavHeaderDdata();
+
 
                 }
 
@@ -201,22 +204,7 @@ public class MainActivity extends AppCompatActivity {
                     FirebaseAuth.getInstance().signOut();
                 }
                 Fragment  sfragment = LoginFragment.newInstance(null);
-               // Navigation.findNavController(view).navigate(R.id.loginFragment);
-               // Navigation.findNavController(this, R.id.loginFragment);
 
-             /*  FragmentManager manager = getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-
-                //initialize your second fragment
-
-                //replace your current container being most of the time as FrameLayout
-                //
-                transaction.replace(R.id.nav_host_fragment, sfragment);
-                transaction.hide(getResources().);
-                //transaction.add(R.id.nav_host_fragment,sfragment);
-                transaction.commit();
-
-*/
                 FragmentManager fm = getSupportFragmentManager();
                 fm.beginTransaction()
                         .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out).replace(R.id.nav_host_fragment, sfragment)
@@ -240,7 +228,47 @@ public class MainActivity extends AppCompatActivity {
         if (currentUser!=null){
             nav_user.setText(currentUser.getDisplayName());
             nav_email.setText(currentUser.getEmail());
-           // nav_imagen.setImageResource(R.drawable.download);
+
+
+
+            mStorageRef = FirebaseStorage.getInstance().getReference();
+
+
+            StorageReference islandRef = storage.getReferenceFromUrl("gs://parties-33bbc.appspot.com").child("fotos/"+currentUser.getEmail());
+
+            File localFile = null;
+            try {
+                localFile = File.createTempFile("image", "jpeg");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                @Override
+                public void onSuccess(byte[] bytes) {
+                    Bitmap bitmapIMG = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+
+                    nav_imagen.setImageBitmap(bitmapIMG);
+
+
+                }
+            });
+
+
+
+
+
+/*
+
+            Picasso.get()
+                    .load(currentUser.getPhotoUrl())
+                    .placeholder(R.drawable.ic_launcher_foreground)
+                    .error(R.drawable.ic_launcher_background)
+                    .into(nav_imagen);
+            System.out.println(currentUser.getPhotoUrl()+"prueba de imagen1111111");
+*/
+
+            //nav_imagen.setImageResource( );
             System.out.println(currentUser.getEmail() + " current eso es una prueba del main");
 
         }

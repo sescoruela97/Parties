@@ -32,14 +32,14 @@
                 android:text="TextView" />
 
             <Button
-                android:id="@+id/btnComprar"
+                android:id="@+id/btnMaps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#0000BCD4"
+                android:background="@drawable/boton"
                 android:hapticFeedbackEnabled="false"
                 android:shadowColor="#FDF9F9"
-                android:text="comprar"
+                android:text="Como llegar"
                 android:textColor="#03A9F4"
                 android:textColorHint="#03A9F4" />
 

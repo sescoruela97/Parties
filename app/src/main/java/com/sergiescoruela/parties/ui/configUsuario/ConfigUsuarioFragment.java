@@ -54,6 +54,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -177,17 +178,37 @@ public class ConfigUsuarioFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-
+                String remplazar= currentUser.getEmail();
+                //remplazar.replaceAll("[-+.^:,]","");
+                // remplazar.replace(".","@");
+                String replazar1= remplazar.replace(".","@");
+                System.out.println(replazar1);
 
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("usuario");
+                DatabaseReference myRef = database.getReference("usuario/"+replazar1);
+                DatabaseReference myRef2 = database.getReference("usuario/"+replazar1);
+
 
 
                 Usuarios usuarios = new Usuarios(txtnombre.getText().toString(),txtCorreo.getText().toString(),txtContraseña.getText().toString()
                         ,txtFechaNacimiento.getText().toString());
 
 
-                myRef.push().setValue(usuarios);
+                for (int i = 0; i <listaUsuarios.size(); i++) {
+                    System.out.println("Config3");
+                    if(currentUser.getEmail().equals(listaUsuarios.get(i).getCorreo())){
+
+                        System.out.println(currentUser.getEmail() + "    config    "+listaUsuarios.get(i).getCorreo());
+
+                        myRef2.removeValue();
+
+                    }
+                }
+
+                myRef.setValue(usuarios);
+
+
+
 
             }
         });
@@ -229,8 +250,7 @@ public class ConfigUsuarioFragment extends Fragment {
 
 
 
-        StorageReference islandRef = storage.getReferenceFromUrl("gs://parties-33bbc.appspot.com").child("fotos/"+txtCorreo.getText().toString());
-
+        StorageReference islandRef = storage.getReferenceFromUrl("gs://parties-33bbc.appspot.com").child("fotos/"+currentUser.getEmail());
 
         File localFile = null;
         try {
@@ -238,18 +258,6 @@ public class ConfigUsuarioFragment extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-       /* islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                Bitmap bitmapIMG = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-
-                imgUsuario.setImageBitmap(bitmapIMG);
-
-
-            }
-        });
-*/
 
         islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
@@ -274,37 +282,7 @@ public class ConfigUsuarioFragment extends Fragment {
 
         if (requestCode==GALLERY_INTENT &&  resultCode == RESULT_OK){
 
-           /* Uri uri =  data.getData();
 
-            final StorageReference filePath = mStorageRef.child("fotos").child(txtCorreo.getText().toString());
-            //final StorageReference filePath = mStorageRef.child(txtCorreo.getText().toString()).child(uri.getLastPathSegment());
-
-            filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                   // final Uri downloadUrl = taskSnapshot.getUploadSessionUri();
-
-
-                    filePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            Uri downloadUrl = uri;
-                            //Toast.makeText(getBaseContext(), "Upload success! URL - " + downloadUrl.toString() , Toast.LENGTH_SHORT).show();
-
-                            Glide.with(getActivity())
-                                    .load(downloadUrl)
-                                    .fitCenter()
-                                    .centerCrop()
-                                    .into(imgUsuario);
-                        }
-                    });
-
-                    Toast.makeText(getContext(), "Se ha subido la imagen", Toast.LENGTH_SHORT).show();
-                }
-            });
-
-*/
 
 
             Uri resultUri = data.getData();
@@ -314,7 +292,6 @@ public class ConfigUsuarioFragment extends Fragment {
 
 
            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-         //  bitmap.compress(Bitmap.CompressFormat.JPEG,90,byteArrayOutputStream);
 
            final byte [] bytes = byteArrayOutputStream.toByteArray();
 
@@ -326,23 +303,16 @@ public class ConfigUsuarioFragment extends Fragment {
 
 
 
-           // Uri uri =  data.getData();
-
-         //   final StorageReference filePath = mStorageRef.child("fotos").child(txtCorreo.getText().toString());
-            //final StorageReference filePath = mStorageRef.child(txtCorreo.getText().toString()).child(uri.getLastPathSegment());
-
             filePath.putFile(resultUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                    // final Uri downloadUrl = taskSnapshot.getUploadSessionUri();
 
 
                     filePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
                             Uri downloadUrl = uri;
-                            //Toast.makeText(getBaseContext(), "Upload success! URL - " + downloadUrl.toString() , Toast.LENGTH_SHORT).show();
 
                             Glide.with(getActivity())
                                     .load(downloadUrl)

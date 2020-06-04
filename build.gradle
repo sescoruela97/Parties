@@ -5,6 +5,7 @@ buildscript {
     repositories {
         google()
         jcenter()
+
         
     }
     dependencies {
@@ -16,6 +17,8 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
+
+
 
 allprojects {
     repositories {

@@ -1,5 +1,6 @@
 package com.sergiescoruela.parties.ui.login;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.FragmentTransaction;
@@ -220,6 +221,18 @@ public class LoginFragment extends Fragment {
 
         mainActivity = (MainActivity) context;
 
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
     }
 
 

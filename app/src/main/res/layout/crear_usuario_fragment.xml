@@ -64,7 +64,7 @@
                 android:layout_margin="10dp"
                 android:ems="10"
                 android:hint="Correo"
-                android:inputType="textPersonName" />
+                android:inputType="textWebEmailAddress" />
 
             <TextView
                 android:id="@+id/lblContraseña"
@@ -81,7 +81,7 @@
                 android:layout_margin="10dp"
                 android:ems="10"
                 android:hint="Contraseña"
-                android:inputType="textPersonName" />
+                android:inputType="textPassword" />
 
             <TextView
                 android:id="@+id/lblFechaNacimiento"
@@ -105,7 +105,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="Reguistrarse" />
+                android:background="@drawable/boton"
+                android:text="Registrarse"
+                android:textColor="#03A9F4" />
         </LinearLayout>
     </ScrollView>
 

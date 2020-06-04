@@ -38,26 +38,31 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.sergiescoruela.parties.ui.login.LoginFragment"
-        android:label="login_fragment"
+        android:label="Loguin"
         tools:layout="@layout/login_fragment" />
     <fragment
         android:id="@+id/crearUsuarioFragment"
         android:name="com.sergiescoruela.parties.ui.crearusuarios.CrearUsuarioFragment"
-        android:label="crear_usuario_fragment"
+        android:label="Registro"
         tools:layout="@layout/crear_usuario_fragment" />
     <fragment
         android:id="@+id/mostrarLocalFragment"
         android:name="com.sergiescoruela.parties.ui.mostrarLocal.MostrarLocalFragment"
-        android:label="mostrar_local_fragment"
+        android:label="Local"
         tools:layout="@layout/mostrar_local_fragment" />
     <fragment
         android:id="@+id/configUsuarioFragment"
         android:name="com.sergiescoruela.parties.ui.configUsuario.ConfigUsuarioFragment"
-        android:label="config_usuario_fragment"
+        android:label="Cuenta"
         tools:layout="@layout/config_usuario_fragment" />
     <fragment
         android:id="@+id/recuperarFragment"
         android:name="com.sergiescoruela.parties.ui.RecuperarFragment"
-        android:label="recuperar_fragment"
+        android:label="Recuperar "
         tools:layout="@layout/recuperar_fragment" />
+    <fragment
+        android:id="@+id/mostrarPreioFragment"
+        android:name="com.sergiescoruela.parties.ui.mostrarPrecio.MostrarPreioFragment"
+        android:label="Precio"
+        tools:layout="@layout/mostrar_preio_fragment" />
 </navigation>
