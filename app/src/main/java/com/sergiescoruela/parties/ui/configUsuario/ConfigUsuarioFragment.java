@@ -207,6 +207,7 @@ public class ConfigUsuarioFragment extends Fragment {
 
                 myRef.setValue(usuarios);
 
+                Toast.makeText(getContext(), "Se han canbiado los datos", Toast.LENGTH_SHORT).show();
 
 
 
@@ -242,6 +243,8 @@ public class ConfigUsuarioFragment extends Fragment {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
                 startActivityForResult(intent,GALLERY_INTENT);
+                Toast.makeText(getContext(), "Se ha subido la imagen", Toast.LENGTH_SHORT).show();
+
 
             }
         });

@@ -47,7 +47,5 @@ dependencies {
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.4.+'
     implementation 'id.zelory:compressor:2.1.0'
     implementation 'com.paypal.sdk:paypal-android-sdk:2.15.3'
-    implementation files('src/main/java/com/sergiescoruela/parties/activation.jar')
-    implementation files('src/main/java/com/sergiescoruela/parties/additionnal.jar')
-    implementation files('src/main/java/com/sergiescoruela/parties/mail.jar')
+
 }

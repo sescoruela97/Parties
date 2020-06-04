@@ -4,7 +4,6 @@ import androidx.annotation.RequiresApi;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -30,9 +29,7 @@ import com.sergiescoruela.parties.pojo.PaypalConfig;
 import com.sergiescoruela.parties.pojo.Precio;
 
 import java.math.BigDecimal;
-import java.text.NumberFormat;
 import java.text.ParseException;
-import java.util.Locale;
 
 public class MostrarPreioFragment extends Fragment {
 
@@ -151,7 +148,7 @@ public class MostrarPreioFragment extends Fragment {
                 System.out.println("se a realizado el pago");
                 Toast.makeText(getContext(), "Se ha comprado correctamnete", Toast.LENGTH_SHORT).show();
 
-
+/*
                 String enviarcorreo = currentUser.getEmail().toString();
                 String enviarasunto = "Confirmacion de la compra de su entrada";
                 String enviarmensaje = "¡Hola " + currentUser.getDisplayName() + "! Te confirmamos la compra de tu entrada a trabes de nuestra aplicacion \n" +
@@ -159,7 +156,7 @@ public class MostrarPreioFragment extends Fragment {
                         "¡Gracias por confiar en nosotros y que disfrute de su velada!";
 
                 // Defino mi Intent y hago uso del objeto ACTION_SEND
-               /* Intent intent = new Intent(Intent.ACTION_SEND);
+                Intent intent = new Intent(Intent.ACTION_SEND);
 
                 // Defino los Strings Email, Asunto y Mensaje con la función putExtra
                 intent.putExtra(Intent.EXTRA_EMAIL,
@@ -173,10 +170,31 @@ public class MostrarPreioFragment extends Fragment {
                 // Lanzo el selector de cliente de Correo
               //  startActivity(Intent.createChooser(intent, "Elije un cliente de Correo:"));*/
 
+                  /*  Mail m = new Mail("gmailusername@gmail.com", "password");
 
+                    String[] toArr = {"bla@bla.com", "lala@lala.com"};
+                    m.setTo(toArr);
+                   // m.se(toArr);
+                    m.setFrom(enviarcorreo);
+                    m.setSubject(enviarmensaje);
+                    m.setBody(enviarasunto);
 
+                    try {
+                        m.addAttachment("/sdcard/filelocation");
 
-            } else {
+                        if(m.send()) {
+                            //Toast.makeText(MailApp.this, "Email was sent successfully.", Toast.LENGTH_LONG).show();
+                        } else {
+                            //Toast.makeText(MailApp.this, "Email was not sent.", Toast.LENGTH_LONG).show();
+                        }
+                    } catch(Exception e) {
+                        //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show();
+                        Log.e("MailApp", "Could not send email", e);
+                    }
+
+                    */
+
+                } else {
                 System.out.println("no a realizado el pago 1");
 
             }

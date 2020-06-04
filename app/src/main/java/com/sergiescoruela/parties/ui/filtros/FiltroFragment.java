@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
@@ -38,6 +39,7 @@ public class FiltroFragment extends Fragment {
     private FiltroViewModel filtroViewModel;
     private Spinner spiMusica, spiHoras, spiEdad;
     private Button btnFiltrar;
+    private CheckBox ckbPub,ckbDisco;
 
     private Map<String, Local> mapaFiltro;
     private ArrayList<Local> listafiltros;
@@ -85,6 +87,8 @@ public class FiltroFragment extends Fragment {
 
 
 
+
+
         spiEdad =  root.findViewById(R.id.spiEdad);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapterEdad = ArrayAdapter.createFromResource(getActivity(),
@@ -94,8 +98,8 @@ public class FiltroFragment extends Fragment {
         // Apply the adapter to the spinner
         spiEdad.setAdapter(adapterEdad);
 
-
-      //  listafiltros.add(new Local("Goku","Son Gokū es el protagonista del manga y anime Dragon Ball creado por Akira Toriyama.",R.drawable.download,"02:00","pop","18"));
+        ckbPub= root.findViewById(R.id.ckBoxPub);
+        ckbDisco= root.findViewById(R.id.ckBoxDisco);
 
 
         myRef.addValueEventListener(new ValueEventListener() {
@@ -145,15 +149,46 @@ public class FiltroFragment extends Fragment {
 
                     if(local.getEdad()!=null && local.getHora()!=null && local.getMusica()!=null){
 
-                        System.out.println("Entra1");
-                        if (local.getEdad().equals(spiEdad.getSelectedItem())
-                                && local.getMusica().equals(spiMusica.getSelectedItem())
-                                && local.getHora().equals(spiHoras.getSelectedItem()) ){
-                            System.out.println("Entra2");
 
-                            listaEnviar.add(local);
-                            System.out.println(local.getNombre());
+                        System.out.println("Entra1");
+                        if (ckbPub.isChecked()==true){
+                            if (local.getEdad().equals(spiEdad.getSelectedItem())
+                                    && local.getMusica().equals(spiMusica.getSelectedItem())
+                                    && local.getHora().equals(spiHoras.getSelectedItem())
+                                    && local.getDescripcion().equalsIgnoreCase("Pub")){
+                                System.out.println("Entra2");
+
+
+                                listaEnviar.add(local);
+                                System.out.println(local.getNombre());
+
+                            }
+
+                        }else if(ckbDisco.isChecked()==true){
+                            if (local.getEdad().equals(spiEdad.getSelectedItem())
+                                    && local.getMusica().equals(spiMusica.getSelectedItem())
+                                    && local.getHora().equals(spiHoras.getSelectedItem())
+                                    && local.getDescripcion().equalsIgnoreCase("Discoteca")){
+                                System.out.println("Entra2");
+
+
+                                listaEnviar.add(local);
+                                System.out.println(local.getNombre());
+
+                            }
+                        }else {
+                            if (local.getEdad().equals(spiEdad.getSelectedItem())
+                                    && local.getMusica().equals(spiMusica.getSelectedItem())
+                                    && local.getHora().equals(spiHoras.getSelectedItem())
+                            ) {
+                                System.out.println("Entra2");
+
+
+                                listaEnviar.add(local);
+                                System.out.println(local.getNombre());
+                            }
                         }
+
                     }else {
 
                         System.out.println("ESTE DATO ES NULLO");
